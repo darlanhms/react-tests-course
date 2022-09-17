@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import List from './components/List';
+import ListPerson from './components/ListPerson';
 import peopleData from './data/people';
 
 function App(): React.ReactElement {
@@ -13,7 +13,9 @@ function App(): React.ReactElement {
     <main>
       <section className="container">
         <h3>{people.length} birthdays today</h3>
-        <List people={people} />
+        {people.map(person => (
+          <ListPerson key={`person_${person.id}`} person={person} />
+        ))}
         <button onClick={handleClear}>Clear all</button>
       </section>
     </main>
